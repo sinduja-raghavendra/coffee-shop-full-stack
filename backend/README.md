@@ -74,3 +74,19 @@ The `--reload` flag will detect file changes and restart the server automaticall
     - Right-clicking the collection folder for barista and manager, navigate to the authorization tab, and including the JWT in the token field (you should have noted these JWTs).
     - Run the collection and correct any errors.
     - Export the collection overwriting the one we've included so that we have proper JWTs
+
+## Testing
+
+I used `Postman Collections` to test all my Endpoints for expected behaviour & correct permission execution.
+
+To execute the tests, follow these steps:
+
+1. Install [Postman](https://www.getpostman.com/downloads/)
+2. Download the json file from this repository (`udacity-fsnd-udaspicelatte.postman_collection.json`)
+3. Open `Postman` and click on "Import" on the top-left corner
+4. Select `udacity-fsnd-udaspicelatte.postman_collection.json`
+5. Once uploaded, Click on "Run" (right next to "udacity-fsnd-udaspicelatte collection file") 
+
+>_tip_: Dont forget to have **flask** running before testing!
+
+Please note that tests have been made with (possibly) invalid tokens, so some of them won´t pass anymore.
