@@ -29,6 +29,8 @@ def get_drinks():
 
 # Get detailed record of all drinks
 # Requires 'get:drinks-detail' permission
+
+
 @app.route('/drinks-detail')
 @requires_auth('get:drinks-detail')
 def get_drinks_detail(jwt):
@@ -43,6 +45,8 @@ def get_drinks_detail(jwt):
 
 # Add new drink
 # Requires 'post:drinks' permission
+
+
 @app.route('/drinks', methods=['POST'])
 @requires_auth('post:drinks')
 def add_drink(jwt):
@@ -118,6 +122,7 @@ def unprocessable(error):
         "message": "unprocessable"
     }), 422
 
+
 @app.errorhandler(404)
 def resource_not_found(error):
     return jsonify({
@@ -126,6 +131,7 @@ def resource_not_found(error):
         "message": "resource not found"
     }), 404
 
+
 @app.errorhandler(400)
 def resource_not_found(error):
     return jsonify({
@@ -133,6 +139,7 @@ def resource_not_found(error):
         "error": 400,
         "message": "bad request"
     }), 400
+
 
 @app.errorhandler(AuthError)
 def handle_auth_error(ex):

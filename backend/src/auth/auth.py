@@ -9,18 +9,20 @@ AUTH0_DOMAIN = 'coffee-shop-app-full-stack.us.auth0.com'
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'coffee'
 
-## AuthError Exception
+# AuthError Exception
 '''
 AuthError Exception
 A standardized way to communicate auth failure modes
 '''
+
+
 class AuthError(Exception):
     def __init__(self, error, status_code):
         self.error = error
         self.status_code = status_code
 
 
-## Auth Header
+# Auth Header
 # Obtains the Access Token from the Authorization Header
 def get_token_auth_header():
     auth = request.headers.get('Authorization', None)
@@ -53,6 +55,8 @@ def get_token_auth_header():
     return token
 
 #  Verifies and decodes the Auth0 JWTs
+
+
 def verify_decode_jwt(token):
     jsonurl = urlopen(f'https://{AUTH0_DOMAIN}/.well-known/jwks.json')
     jwks = json.loads(jsonurl.read())
@@ -102,11 +106,13 @@ def verify_decode_jwt(token):
                 'description': 'Unable to parse authentication token.'
             }, 400)
     raise AuthError({
-                'code': 'invalid_header',
+        'code': 'invalid_header',
                 'description': 'Unable to find the appropriate key.'
-            }, 400)
+    }, 400)
 
 # Verifies permissions for the user
+
+
 def check_permissions(permission, payload):
     if 'permissions' not in payload:
         raise AuthError({
@@ -121,6 +127,7 @@ def check_permissions(permission, payload):
         }, 401)
 
     return True
+
 
 def requires_auth(permission=''):
     def requires_auth_decorator(f):
